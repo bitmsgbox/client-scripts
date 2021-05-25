@@ -3,6 +3,15 @@ interface Window {
 }
 
 (function() {
+  const l = document.getElementById('bmbclientloader') as HTMLScriptElement
+  if (!l) {
+    return
+  }
+  const host = l.src.match(/https?:\/\/[^/]*/)[0]
+  if (!host) {
+    return
+  }
+
   function fetchFiles(callback: (cssFile: string, jsFile: string) => void) {
     const req = new XMLHttpRequest()
     req.onreadystatechange = function () {
@@ -15,17 +24,14 @@ interface Window {
         }
       }
     }
-    req.open('GET', '/asset-manifest.json')
+    req.open('GET', `${host}/asset-manifest.json`)
     req.send()
   }
 
   function init() {
-    const l = document.getElementById('bmbclientloader')
-    if (l) {
-      const m = l.getAttribute('data-m')
-      if (m) {
-        window.BMB.renderFixedClient(m)
-      }
+    const m = l.getAttribute('data-m')
+    if (m) {
+      window.BMB.renderFixedClient(m)
     }
   }
 

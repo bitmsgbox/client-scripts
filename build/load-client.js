@@ -1,4 +1,12 @@
 (function () {
+    var l = document.getElementById('bmbclientloader');
+    if (!l) {
+        return;
+    }
+    var host = l.src.match(/https?:\/\/[^/]*/)[0];
+    if (!host) {
+        return;
+    }
     function fetchFiles(callback) {
         var req = new XMLHttpRequest();
         req.onreadystatechange = function () {
@@ -11,16 +19,13 @@
                 }
             }
         };
-        req.open('GET', '/asset-manifest.json');
+        req.open('GET', host + "/asset-manifest.json");
         req.send();
     }
     function init() {
-        var l = document.getElementById('bmbclientloader');
-        if (l) {
-            var m = l.getAttribute('data-m');
-            if (m) {
-                window.BMB.renderFixedClient(m);
-            }
+        var m = l.getAttribute('data-m');
+        if (m) {
+            window.BMB.renderFixedClient(m);
         }
     }
     fetchFiles(function (cssFile, jsFile) {
