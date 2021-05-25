@@ -1,0 +1,13 @@
+{
+  "name": "clientcripts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "start": "tsc ./load-client.ts -w -t es5 --outFile build/load-client.js"
+  }
+}
