@@ -3,10 +3,7 @@
     if (!l) {
         return;
     }
-    var host = l.src.match(/https?:\/\/[^/]*/)[0];
-    if (!host) {
-        return;
-    }
+    var host = l.src.match(/https?:\/\/[^/]*/)[0] || '';
     function fetchFiles(callback) {
         var req = new XMLHttpRequest();
         req.onreadystatechange = function () {

@@ -7,10 +7,7 @@ interface Window {
   if (!l) {
     return
   }
-  const host = l.src.match(/https?:\/\/[^/]*/)[0]
-  if (!host) {
-    return
-  }
+  const host = l.src.match(/https?:\/\/[^/]*/)[0] || ''
 
   function fetchFiles(callback: (cssFile: string, jsFile: string) => void) {
     const req = new XMLHttpRequest()
