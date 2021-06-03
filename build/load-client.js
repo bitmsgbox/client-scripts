@@ -12,7 +12,7 @@
                     var files = JSON.parse(req.responseText).files;
                     var cssFile = files['main.css'];
                     var jsFile = files['main.js'];
-                    callback(host + "/" + cssFile, host + "/" + jsFile);
+                    callback(cssFile, jsFile);
                 }
             }
         };

@@ -17,7 +17,7 @@ interface Window {
           const files = JSON.parse(req.responseText).files
           const cssFile = files['main.css']
           const jsFile = files['main.js']
-          callback(`${host}/${cssFile}`, `${host}/${jsFile}`)
+          callback(cssFile, jsFile)
         }
       }
     }
